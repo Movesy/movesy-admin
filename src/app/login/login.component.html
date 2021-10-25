@@ -1,38 +1,33 @@
-<div>
-  <div class="center">
-    <h1></h1>
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Login</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="login.component.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+<form #login="ngForm" (ngSubmit)="submit(login)" class="form-login">
+  <h1 class="h1 mb-1 font-weight-bold">Movesy</h1>
+  <h5 class="h5 mb-5 font-weight-normal">Admin</h5>
+  <div class="mb-3">
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
   </div>
-  <div class="center">
-    <h1>Movesy</h1>
+  <div class="mb-3">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
   </div>
-  <div class="center">
-    <h5>Admin</h5>
+  <div class="mb-3">
+    <a class="btn btn-lg btn-primary btn-block" type="submit" routerLink="orders">Log in</a>
   </div>
-  <div class="mat-action-row">
-    <div class="center">
-      <figure class="text-center">
-        <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </figure>
-    </div>
-  </div>
-  <div class="mat-action-row">
-    <div class="center">
-      <figure class="text-center">
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </figure>
-    </div>
-  </div>
-  <div class="mat-action-row">
-    <div class="center">
-        <a mat-raised-button routerLink="/orders" target="_self">Login</a>
-    </div>
-  </div>
-</div>
+</form>
+</body>
 <router-outlet></router-outlet>
 
