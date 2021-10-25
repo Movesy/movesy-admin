@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {NgForm} from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -8,17 +9,31 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  form: FormGroup;
+  submitted = false;
 
-  constructor(httpClient: HttpClient) {
-
-  }
+  constructor(
+    private httpClient: HttpClient,
+    private formBuilder: FormBuilder)
+  {  }
 
   ngOnInit(): void {
-
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  submit(login: NgForm) {
-    console.log("Form submitted");
+  get f() { return this.form.controls; }
+
+  submit(login) {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    console.log("Username: " + this.f.username.value + " Password: " + this.f.password.value, login);
 
   }
 }

@@ -38,13 +38,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         component: LoginComponent
       },
       {
-        path: 'orders',
+        path: 'admin',
+        component: OrderslistComponent,
+      },
+      {
+        path: 'admin/orders',
         component: OrderslistComponent
       },
       {
-        path: 'users',
+        path: 'admin/users',
         component: UserslistComponent
-      }
+      },
     ]),
     NgbModule
   ],
