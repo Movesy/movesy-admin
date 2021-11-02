@@ -2,7 +2,6 @@
 Web-based admin panel
 
 # [Haladási napló](https://github.com/Movesy/movesy-admin/blob/master/haladasinaplo.md)
-[haladási napló](https://github.com/Movesy/movesy-admin/blob/master/haladasinaplo.md)
 
 # AdminPage
 
