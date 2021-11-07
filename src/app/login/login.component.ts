@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.WebService.post('authenticate', { username:  this.f.username.value, password: this.f.password.value });
+    this.WebService.login(this.f.username.value, this.f.password.value );
     console.log("Username: " + this.f.username.value + " Password: " + this.f.password.value, login);
     if(this.f.username.value == 'admin' && this.f.password.value == 'admin'){
       this.router.navigateByUrl('admin');
