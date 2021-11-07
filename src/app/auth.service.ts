@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-
-
-@Injectable()
-export class ConfigService {
-  constructor(private http: HttpClient) { }
-}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
+  readonly ROOT_URL;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.ROOT_URL = "https://movesy_backend";
+  }
 
-  getUserDetails(){
-    //post these details to API return user info if correct
+  get(uri: string){
+    return this.http.get('$(this.ROOT_URL)/$(uri)');
+  }
+
+  post(uri: string, payload: Object){
+    return this.http.post('$(this.ROOT_URL)/$(uri)', payload);
+  }
+
+  put(uri: string, payload: Object){
+    return this.http.put('$(this.ROOT_URL)/$(uri)', payload);
+  }
+
+  delete(uri: string){
+    return this.http.delete('$(this.ROOT_URL)/$(uri)');
   }
 }

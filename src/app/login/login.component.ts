@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AuthService} from "../auth.service";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private formBuilder: FormBuilder)
+    private formBuilder: FormBuilder,
+    private WebService : AuthService)
   {  }
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.WebService.get('/login')
     console.log("Username: " + this.f.username.value + " Password: " + this.f.password.value, login);
 
   }
