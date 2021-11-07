@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 export interface Tile {
   color: string;
   cols: number;
@@ -13,6 +14,9 @@ export interface Tile {
   styleUrls: ['./orderslist.component.css']
 })
 export class OrderslistComponent implements OnInit {
+
+  lat = 51.678418;
+  lng = 7.809007;
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},

@@ -14,6 +14,7 @@ import { OrderslistComponent } from './orderslist/orderslist.component';
 import { UserslistComponent } from './userslist/userslist.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule} from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         component: UserslistComponent
       },
     ]),
-    NgbModule
+    NgbModule,
+    AgmCoreModule.forRoot( {
+      apiKey: 'AIzaSyCye2rnSJw6HpGVQ5uWKEskIeWlxm1ycpc'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
