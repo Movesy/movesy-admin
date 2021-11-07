@@ -20,8 +20,8 @@ export class AuthService {
     return this.http.post('$(this.ROOT_URL)/$(uri)', details);
   }
 
-  put(uri: string, payload: Object){
-    return this.http.put('$(this.ROOT_URL)/$(uri)', payload);
+  put(uri: string, details: Object){
+    return this.http.put('$(this.ROOT_URL)/$(uri)', details);
   }
 
   delete(uri: string){

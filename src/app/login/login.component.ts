@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private formBuilder: FormBuilder,
-    private WebService : AuthService)
+    private WebService : AuthService,
+    private router : Router)
   {  }
 
   ngOnInit(): void {
@@ -37,6 +39,10 @@ export class LoginComponent implements OnInit {
 
     this.WebService.post('authenticate', { username:  this.f.username.value, password: this.f.password.value });
     console.log("Username: " + this.f.username.value + " Password: " + this.f.password.value, login);
-
+    if(this.f.username.value == 'admin' && this.f.password.value == 'admin'){
+      this.router.navigateByUrl('admin');
+    }else{
+      alert('Wrong password or username.')
+    }
   }
 }
