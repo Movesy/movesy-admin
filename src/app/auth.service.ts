@@ -16,6 +16,10 @@ export class AuthService {
     this.post("authenticate", {username, password});
   }
 
+  getUsersList(){
+    return this.get('user/list');
+  }
+
   get(uri: string){
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }
