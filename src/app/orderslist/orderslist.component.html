@@ -38,7 +38,107 @@
       [colspan]="tile.cols"
       [rowspan]="tile.rows"
       [style.background]="tile.color">
-      {{tile.text}}
+      <div *ngIf="tile.text === 'Selected orders description'; else elseBlock1">
+        <div>
+          <h2>Valami csomag <button type="button" class="btn btn-danger">Delete</button></h2>
+          <form>
+            <div class="row justify-content-between">
+              <small>Transporter: mintapeter353</small>
+              <small>Customer: mintaberci123</small>
+              <small>Status: Waiting for quote</small>
+            </div>
+            <div class="row d-flex justify-content-between">
+              <small>Size: 20 x 10 x 320</small>
+              <small>Weight: 20 kg</small>
+              <small>Deadline: 2021.11.01</small>
+            </div>
+            <div class="row d-flex justify-content-between">
+              <small>From: A</small>
+              <small>To: B</small>
+              <small>Price: 20.000 FT</small>
+            </div>
+          </form>
+        </div>
+      </div>
+      <ng-template #elseBlock1>
+        <div *ngIf="tile.text === 'Orders list'; else elseBlock">
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order one valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order two valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order three valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action d-flex">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="mb-1">Order four valami csomag</h3>
+              </div>
+              <small class="text-warning">Status: Waiting for quote</small>
+            </a>
+          </div>
+        </div>
+        <ng-template #elseBlock>{{tile.text}}</ng-template>
+      </ng-template>
     </mat-grid-tile>
   </mat-grid-list>
 
