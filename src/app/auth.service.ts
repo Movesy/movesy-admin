@@ -20,6 +20,10 @@ export class AuthService {
     return this.get('user/list');
   }
 
+  getOrdersList(){
+    return this.get('package/list');
+  }
+
   get(uri: string){
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }

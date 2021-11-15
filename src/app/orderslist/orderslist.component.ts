@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-
+import {AuthService} from "../auth.service";
 
 export interface Tile {
   color: string;
   cols: number;
   rows: number;
   text: string;
+}
+
+export interface Order {
+  ID: string;
+  size: string;
+  weight: string;
+  prize: string;
+  deadline: string;
+  from: string;
+  to: string;
+  customer: string;
+  transporter: string;
 }
 
 @Component({
@@ -25,9 +37,10 @@ export class OrderslistComponent implements OnInit {
     {text: 'Selected orders description', cols: 3, rows: 5, color: '#cccccc'},
   ];
 
-  constructor() { }
+  constructor(private WebService : AuthService) { }
 
   ngOnInit(): void {
+    var orders = this.WebService.getOrdersList();
   }
 
 }
