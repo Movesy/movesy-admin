@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User, Review} from "../Model";
+import {User, Review} from "../model";
 import {AuthService} from "../auth.service";
 
 export interface Tile {

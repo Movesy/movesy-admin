@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
-import {Order, Orders} from "../Model";
+import {Order, Orders} from "../model";
 
 export interface Tile {
   color: string;
