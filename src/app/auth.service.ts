@@ -24,6 +24,10 @@ export class AuthService {
     return this.get('package/list');
   }
 
+  getReviewsList(){
+    return this.get('review/list');
+  }
+
   get(uri: string){
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }

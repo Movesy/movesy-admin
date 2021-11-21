@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User, Review} from "../Model";
+import {AuthService} from "../auth.service";
 
 export interface Tile {
   color: string;
@@ -14,6 +15,10 @@ export interface Tile {
   styleUrls: ['./userslist.component.css']
 })
 export class UserslistComponent implements OnInit {
+  users: User[] = [];
+  reviews: Review[] = [];
+  selectedUser: User;
+  usersReviews: Review[] = [];
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
@@ -22,10 +27,25 @@ export class UserslistComponent implements OnInit {
     {text: 'Package or Rating', cols: 3, rows: 9, color: '#cccccc'},
   ];
 
-  constructor() { }
+  constructor(private WebService : AuthService) { }
 
   ngOnInit(): void {
+    this.users = [];
+    this.reviews = [];
 
+    this.loadUsers();
+    this.loadReviews();
   }
 
+  loadUsers() {
+    this.WebService.getUsersList().subscribe((users: any[]) => {
+      this.users = users;
+    })
+  }
+
+  loadReviews() {
+    this.WebService.getReviewsList().subscribe((reviews: any[]) => {
+      this.reviews = reviews;
+    })
+  }
 }
