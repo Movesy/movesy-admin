@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
-import {Order} from "../Model";
+import {Order, Orders} from "../Model";
 
 export interface Tile {
   color: string;
@@ -15,9 +15,9 @@ export interface Tile {
   styleUrls: ['./orderslist.component.css']
 })
 export class OrderslistComponent implements OnInit {
-
-  lat = 51.678418;
-  lng = 7.809007;
+  orders : Order[] = [];
+  selectedOrder: Order;
+  firstClick: boolean = false;
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
@@ -29,7 +29,13 @@ export class OrderslistComponent implements OnInit {
   constructor(private WebService : AuthService) { }
 
   ngOnInit(): void {
-    var orders = this.WebService.getOrdersList();
+    this.orders = [];
+    this.loadOrders();
   }
 
+  loadOrders() {
+    this.WebService.getOrdersList().subscribe((orders: any[]) => {
+          this.orders = orders;
+        })
+  }
 }
