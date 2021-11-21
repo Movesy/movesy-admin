@@ -34,7 +34,6 @@ export class UserslistComponent implements OnInit {
     this.reviews = [];
 
     this.loadUsers();
-    this.loadReviews();
   }
 
   loadUsers() {
