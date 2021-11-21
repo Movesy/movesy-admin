@@ -1,23 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
+import {Order} from "../Model";
 
 export interface Tile {
   color: string;
   cols: number;
   rows: number;
   text: string;
-}
-
-export interface Order {
-  ID: string;
-  size: string;
-  weight: string;
-  prize: string;
-  deadline: string;
-  from: string;
-  to: string;
-  customer: string;
-  transporter: string;
 }
 
 @Component({

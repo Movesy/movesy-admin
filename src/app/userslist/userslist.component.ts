@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {User, Review} from "../Model";
 
 export interface Tile {
   color: string;
