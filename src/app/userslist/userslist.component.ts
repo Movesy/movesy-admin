@@ -18,6 +18,7 @@ export class UserslistComponent implements OnInit {
   users: User[] = [];
   reviews: Review[] = [];
   selectedUser: User;
+  firstClick: boolean = false;
   usersReviews: Review[] = [];
 
   tiles: Tile[] = [
@@ -40,6 +41,15 @@ export class UserslistComponent implements OnInit {
     this.WebService.getUsersList().subscribe((users: any[]) => {
       this.users = users;
     })
+  }
+
+  changePw(user: User){
+    //TODO
+  }
+
+  selectUser(user: User) {
+    this.selectedUser = user;
+    this.firstClick = true;
   }
 
   loadReviews() {

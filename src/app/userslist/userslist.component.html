@@ -39,53 +39,28 @@
     [rowspan]="tile.rows"
     [style.background]="tile.color">
     <div *ngIf="tile.text === 'User info'; else elseBlock1">
-      <h1 class="text-center">mintapeter123</h1>
-      <h3 class="font-weight-bold text-center">Customer</h3>
-      <div class="row">
-        <p class="align-self-start">Username: mintapeter123</p>
-      </div>
-      <div class="row">
-        <p class="align-self-start">Email: mintapeter12@adas.com</p>
-      </div>
-      <div class="row">
-        <p class="align-self-start">Phone: 062012344</p>
-      </div>
-      <div class="row">
-        <button type="button" class="btn btn-secondary">Change password</button>
+      <div *ngIf="firstClick">
+        <h1 class="text-center">{{selectedUser.username}}</h1>
+        <h3 class="font-weight-bold text-center">{{selectedUser.role}}</h3>
+        <div class="row">
+          <p class="align-self-start">Username: {{selectedUser.username}}</p>
+        </div>
+        <div class="row">
+          <p class="align-self-start">Email: {{selectedUser.email}}</p>
+        </div>
+        <div class="row">
+          <p class="align-self-start">Phone: {{selectedUser.telephone}}</p>
+        </div>
+        <div class="row">
+          <button type="button" (click)="changePw(selectedUser)" class="btn btn-secondary">Change password</button>
+        </div>
       </div>
     </div>
     <ng-template #elseBlock1>
       <div *ngIf="tile.text === 'Users list'; else elseBlock">
-        <div class="list-group ">
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action d-flex">
-            <h3 class="mb-1">mintauser</h3>
+        <div class="list-group" *ngFor="let user of users">
+          <a href="javascript:void(0)" (click)="selectUser(user)" class="list-group-item list-group-item-action d-flex">
+            <h3 class="mb-1">{{user.username}}</h3>
           </a>
         </div>
       </div>

@@ -38,4 +38,9 @@ export class OrderslistComponent implements OnInit {
           this.orders = orders;
         })
   }
+
+  selectOrder(order: Order) {
+    this.selectedOrder = order;
+    this.firstClick = true;
+  }
 }
