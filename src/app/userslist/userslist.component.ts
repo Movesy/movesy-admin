@@ -57,4 +57,8 @@ export class UserslistComponent implements OnInit {
       this.reviews = reviews;
     })
   }
+
+  logout(){
+    this.WebService.logout();
+  }
 }

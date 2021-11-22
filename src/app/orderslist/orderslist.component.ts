@@ -43,4 +43,8 @@ export class OrderslistComponent implements OnInit {
     this.selectedOrder = order;
     this.firstClick = true;
   }
+
+  logout(){
+    this.WebService.logout();
+  }
 }

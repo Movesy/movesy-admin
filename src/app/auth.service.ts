@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {User} from "./model";
+import {shareReplay, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
   readonly ROOT_URL;
 
@@ -13,7 +14,20 @@ export class AuthService {
   }
 
   login(username: string, password: string){
-    this.post("authenticate", {username, password});
+    return this.http.post<User>(`${this.ROOT_URL}/authenticate`, {username, password})
+      .pipe( tap(res => this.setSession(res)), shareReplay());
+  }
+
+  setSession(authResult) {
+    //const expiresAt = moment().add(authResult.expiresIn,'second');
+
+    localStorage.setItem('id_token', authResult.idToken);
+    //localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+  }
+
+  logout() {
+    localStorage.removeItem("id_token");
+    //localStorage.removeItem("expires_at");
   }
 
   getUsersList(){
