@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {User} from "./model";
 import {shareReplay, tap} from "rxjs/operators";
 
@@ -10,7 +10,7 @@ export class AuthService {
   readonly ROOT_URL;
 
   constructor(private http: HttpClient) {
-    this.ROOT_URL = "https://movesy.herokuapp.com";
+    this.ROOT_URL = "http://localhost:4200/api";
   }
 
   login(username: string, password: string){
@@ -19,16 +19,11 @@ export class AuthService {
   }
 
   setSession(authResult) {
-    //const expiresAt = moment().add(authResult.expiresIn,'second');
-
-    console.log(authResult.idToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    //localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+    localStorage.setItem('id_token', 'Bearer ' + authResult.jwtToken);
   }
 
   logout() {
     localStorage.removeItem("id_token");
-    //localStorage.removeItem("expires_at");
   }
 
   getUsersList(){
@@ -48,8 +43,6 @@ export class AuthService {
   }
 
   post(uri: string, details: Object){
-    console.log(details);
-    console.log(this.http.post(`${this.ROOT_URL}/${uri}`, details));
     return this.http.post(`${this.ROOT_URL}/${uri}`, details);
   }
 
@@ -59,5 +52,22 @@ export class AuthService {
 
   delete(uri: string){
     return this.http.delete(`${this.ROOT_URL}/${uri}`);
+  }
+}
+
+export class BasicAuthHtppInterceptorService implements HttpInterceptor {
+
+  constructor() { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+
+    if (localStorage.getItem('id_token')) {
+      req = req.clone({
+        setHeaders: {
+          Authorization: localStorage.getItem('id_token')
+        }
+      })
+    }
+    return next.handle(req);
   }
 }

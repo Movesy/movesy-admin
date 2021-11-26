@@ -38,12 +38,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.WebService.login(this.f.username.value, this.f.password.value).subscribe(() => {
-      console.log("Username: " + this.f.username.value + " Password: " + this.f.password.value + " logged in.", login);
-      if(this.f.username.value == 'Tomi3' && this.f.password.value == 'jelszo123'){
-        this.router.navigateByUrl('admin');
-      }else{
-        alert('Wrong password or username.')
-      }
+      this.router.navigateByUrl('admin');
     });
   }
 }

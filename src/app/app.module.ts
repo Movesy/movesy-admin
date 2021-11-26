@@ -12,9 +12,10 @@ import {RouterModule} from "@angular/router";
 import { LoginComponent } from './login/login.component';
 import { OrderslistComponent } from './orderslist/orderslist.component';
 import { UserslistComponent } from './userslist/userslist.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { AgmCoreModule} from "@agm/core";
+import {BasicAuthHtppInterceptorService} from "./auth.service";
+
 
 @NgModule({
   declarations: [
@@ -51,12 +52,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
         component: UserslistComponent
       },
     ]),
-    NgbModule,
-    /*AgmCoreModule.forRoot( {
-      apiKey: 'AIzaSyCye2rnSJw6HpGVQ5uWKEskIeWlxm1ycpc'
-    })*/
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicAuthHtppInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

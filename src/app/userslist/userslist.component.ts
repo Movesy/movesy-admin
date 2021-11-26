@@ -43,10 +43,6 @@ export class UserslistComponent implements OnInit {
     })
   }
 
-  changePw(user: User){
-    //TODO
-  }
-
   selectUser(user: User) {
     this.selectedUser = user;
     this.firstClick = true;
@@ -60,5 +56,9 @@ export class UserslistComponent implements OnInit {
 
   logout(){
     this.WebService.logout();
+  }
+
+  changePw(user: User){
+    //TODO
   }
 }
