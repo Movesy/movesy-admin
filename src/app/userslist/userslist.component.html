@@ -102,6 +102,72 @@
       </div>
     </div>
     <ng-template #elseBlock1>
+      <div *ngIf="tile.text === 'Package or Rating'; else elseBlock6">
+        <div *ngIf="firstClick">
+          <div *ngIf="selectedUser.role.toString() === 'USER'">
+            <div class="list-group" *ngFor="let p of uPackages">
+              <h2> {{p.name}} <button type="button" (click)="deleteP(p)" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
+              <form>
+                <div class="form-group row justify-content-between">
+                  <label for="transporter" class="col-sm-1 col-form-label small">Transporter:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="transporter" value="{{p.transporterID}}">
+                  </div>
+                  <label for="cos" class="col-sm-1 col-form-label small">Customer:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="cos" value="{{p.userID}}">
+                  </div>
+                  <label for="stat" class="col-sm-1 col-form-label small">Status:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="stat" value="{{p.status}}">
+                  </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                  <label for="size" class="col-sm-1 col-form-label small">Size:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="size" value="{{p.size}}">
+                  </div>
+                  <label for="wei" class="col-sm-1 col-form-label small">Weight:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="wei" value="{{p.weight}}">
+                  </div>
+                  <label for="dl" class="col-sm-1 col-form-label small">Deadline:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="dl" value="{{p.deadline| date:'fullDate'}}">
+                  </div>
+                </div>
+                <div class="form-group row justify-content-between">
+                  <label for="from" class="col-sm-1 col-form-label small">From:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="from" value="{{p.from}}">
+                  </div>
+                  <label for="to" class="col-sm-1 col-form-label small">To:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="to" value="{{p.to}}">
+                  </div>
+                  <label for="price" class="col-sm-1 col-form-label small">Price:</label>
+                  <div class="col-sm-3 small">
+                    <input type="text" class="form-control small" id="price" value="{{p.price}}">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div *ngIf="selectedUser.role.toString() === 'TRANSPORTER'">
+            <div class="list-group-horizontal-lg" *ngFor="let r of reviews">
+              <h2> {{r.customerUsername}} <button type="button" (click)="deleteR(r)" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button><a *ngFor="let a of [].constructor(r.rating)" class="fas fa-star"></a> </h2>
+              <form>
+                <div class="form-group row justify-content-between">
+                  <div class="col-sm-12 small">
+                    <input type="text" class="form-control small" id="review" value="{{r.description}}">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock6>
       <div *ngIf="tile.text === 'Users list'; else elseBlock">
         <div class="list-group" *ngFor="let user of users">
           <a href="javascript:void(0)" (click)="selectUser(user)" class="list-group-item list-group-item-action d-flex">
@@ -110,6 +176,7 @@
         </div>
       </div>
       <ng-template #elseBlock>{{tile.text}}</ng-template>
+    </ng-template>
     </ng-template>
   </mat-grid-tile>
 </mat-grid-list>

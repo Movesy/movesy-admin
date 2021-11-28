@@ -49,4 +49,11 @@ export class OrderslistComponent implements OnInit {
   logout(){
     this.WebService.logout();
   }
+
+  deleteOrder(){
+    this.WebService.deleteOrder(this.selectedOrder);
+    this.orders.forEach((element,index)=>{
+      if(element === this.selectedOrder) this.orders.splice(index, 1);
+    });
+  }
 }

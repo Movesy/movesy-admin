@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User, Review} from "../model";
+import {User, Review, Order, Role} from "../model";
 import {AuthService} from "../auth.service";
 
 export interface Tile {
@@ -16,6 +16,7 @@ export interface Tile {
 })
 export class UserslistComponent implements OnInit {
   users: User[] = [];
+  uPackages: Order[] = [];
   reviews: Review[] = [];
   selectedUser: User;
   firstClick: boolean = false;
@@ -36,6 +37,7 @@ export class UserslistComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = [];
+    this.uPackages = [];
     this.reviews = [];
 
     this.loadUsers();
@@ -54,6 +56,16 @@ export class UserslistComponent implements OnInit {
     this.ePw = false;
     this.selectedUser = user;
     this.firstClick = true;
+    if(user.role.toString() === "USER"){
+      this.WebService.getPackagesByUser(this.selectedUser.id).subscribe((packages: any[]) => {
+        this.uPackages = packages;
+      });
+    }
+    if(user.role.toString() === "TRANSPORTER"){
+      this.WebService.getReviewsByTransporter(this.selectedUser.id).subscribe((reviews: any[]) => {
+        this.reviews = reviews;
+      });
+    }
   }
 
   loadReviews() {
@@ -80,5 +92,16 @@ export class UserslistComponent implements OnInit {
   }
   save(){
 
+  }
+
+  deleteP(p: Order){
+    this.WebService.deleteOrder(p);
+    this.uPackages.forEach((element,index)=>{
+      if(element === p) this.uPackages.splice(index, 1);
+    });
+  }
+
+  deleteR(r: Review) {
+    //TODO
   }
 }

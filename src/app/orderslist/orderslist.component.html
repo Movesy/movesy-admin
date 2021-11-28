@@ -40,7 +40,7 @@
       [style.background]="tile.color">
       <div *ngIf="tile.text === 'Selected orders description'; else elseBlock1">
         <div *ngIf="firstClick">
-          <h2> {{selectedOrder.name}} <button type="button" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
+          <h2> {{selectedOrder.name}} <button type="button" (click)="deleteOrder()" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
           <form>
             <div class="form-group row justify-content-between">
               <label for="transporter" class="col-sm-1 col-form-label small">Transporter:</label>
