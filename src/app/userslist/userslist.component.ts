@@ -19,6 +19,10 @@ export class UserslistComponent implements OnInit {
   reviews: Review[] = [];
   selectedUser: User;
   firstClick: boolean = false;
+  eUn: boolean = false;
+  eEm: boolean = false;
+  ePh: boolean = false;
+  ePw: boolean = false;
   usersReviews: Review[] = [];
 
   tiles: Tile[] = [
@@ -44,6 +48,10 @@ export class UserslistComponent implements OnInit {
   }
 
   selectUser(user: User) {
+    this.eUn = false;
+    this.eEm = false;
+    this.ePh = false;
+    this.ePw = false;
     this.selectedUser = user;
     this.firstClick = true;
   }
@@ -58,7 +66,19 @@ export class UserslistComponent implements OnInit {
     this.WebService.logout();
   }
 
-  changePw(user: User){
-    //TODO
+  editUn(){
+    this.eUn = true;
+  }
+  editEm(){
+    this.eEm = true;
+  }
+  editPh(){
+    this.ePh = true;
+  }
+  editPw(){
+    this.ePw = true;
+  }
+  save(){
+
   }
 }

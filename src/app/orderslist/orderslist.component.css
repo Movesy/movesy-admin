@@ -4,8 +4,13 @@
 .row{
   width: 1300px;
 }
-.btn{
+.btn-danger{
   font-size: 12px;
+  margin-left: 10px;
+}
+.btn-primary{
+  font-size: 12px;
+  margin-left: 10px;
 }
 .mat-grid-tile .mat-figure {
   justify-content: flex-start !important ;

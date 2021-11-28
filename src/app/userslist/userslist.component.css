@@ -5,3 +5,9 @@
 .row{
   width: 1300px;
 }
+.fas{
+  padding: 5px 5px 10px 10px;
+}
+.btn-secondary{
+  margin-left: 20px;
+}
