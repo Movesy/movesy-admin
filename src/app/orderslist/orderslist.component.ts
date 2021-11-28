@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../auth.service";
-import {Order, Orders} from "../model";
+import {Order} from "../model";
 
 export interface Tile {
   color: string;
@@ -18,12 +18,13 @@ export class OrderslistComponent implements OnInit {
   orders : Order[] = [];
   selectedOrder: Order;
   firstClick: boolean = false;
+  size: number;
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
-    {text: 'Orders list', cols: 1, rows: 17, color: '#4ea7ff'},
+    {text: 'Orders list', cols: 1, rows: 38, color: '#4ea7ff'},
     {text: 'Map with pins', cols: 3, rows: 12, color: '#ab7370'},
-    {text: 'Selected orders description', cols: 3, rows: 5, color: '#cccccc'},
+    {text: 'Selected orders description', cols: 3, rows: 6, color: '#cccccc'},
   ];
 
   constructor(private WebService : AuthService) { }
@@ -31,6 +32,7 @@ export class OrderslistComponent implements OnInit {
   ngOnInit(): void {
     this.orders = [];
     this.loadOrders();
+    this.size = this.orders.length * (38/33);
   }
 
   loadOrders() {

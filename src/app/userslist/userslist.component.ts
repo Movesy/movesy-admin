@@ -23,9 +23,9 @@ export class UserslistComponent implements OnInit {
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
-    {text: 'Users list', cols: 1, rows: 17, color: '#4ea7ff'},
+    {text: 'Users list', cols: 1, rows: 25, color: '#4ea7ff'},
     {text: 'User info', cols: 3, rows: 8, color: '#ffffff'},
-    {text: 'Package or Rating', cols: 3, rows: 9, color: '#cccccc'},
+    {text: 'Package or Rating', cols: 3, rows: 10, color: '#cccccc'},
   ];
 
   constructor(private WebService : AuthService) { }

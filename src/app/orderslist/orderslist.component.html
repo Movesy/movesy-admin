@@ -40,29 +40,56 @@
       [style.background]="tile.color">
       <div *ngIf="tile.text === 'Selected orders description'; else elseBlock1">
         <div *ngIf="firstClick">
-          <h2> {{selectedOrder.name}} <button type="button" class="btn btn-danger">Delete</button></h2>
+          <h2> {{selectedOrder.name}} <button type="button" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
           <form>
-            <div class="row justify-content-between">
-              <small>Transporter: {{selectedOrder.transporterID}}</small>
-              <small>Customer: {{selectedOrder.userID}}</small>
-              <small>Status: {{selectedOrder.status}}</small>
+            <div class="form-group row justify-content-between">
+              <label for="transporter" class="col-sm-1 col-form-label small">Transporter:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="transporter" value="{{selectedOrder.transporterID}}">
+              </div>
+              <label for="cos" class="col-sm-1 col-form-label small">Customer:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="cos" value="{{selectedOrder.userID}}">
+              </div>
+              <label for="stat" class="col-sm-1 col-form-label small">Status:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="stat" value="{{selectedOrder.status}}">
+              </div>
             </div>
-            <div class="row d-flex justify-content-between">
-              <small>Size: {{selectedOrder.size}}</small>
-              <small>Weight: {{selectedOrder.weight}}</small>
-              <small>Deadline: {{selectedOrder.deadline}}</small>
+            <div class="form-group row justify-content-between">
+              <label for="size" class="col-sm-1 col-form-label small">Size:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="size" value="{{selectedOrder.size}}">
+              </div>
+              <label for="wei" class="col-sm-1 col-form-label small">Weight:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="wei" value="{{selectedOrder.weight}}">
+              </div>
+              <label for="dl" class="col-sm-1 col-form-label small">Deadline:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="dl" value="{{selectedOrder.deadline| date:'fullDate'}}">
+              </div>
             </div>
-            <div class="row d-flex justify-content-between">
-              <small>From: {{selectedOrder.from.lat}}</small>
-              <small>To: {{selectedOrder.to.lat}}</small>
-              <small>Price: {{selectedOrder.price}} FT</small>
+            <div class="form-group row justify-content-between">
+              <label for="from" class="col-sm-1 col-form-label small">From:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="from" value="{{selectedOrder.from}}">
+              </div>
+              <label for="to" class="col-sm-1 col-form-label small">To:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="to" value="{{selectedOrder.to}}">
+              </div>
+              <label for="price" class="col-sm-1 col-form-label small">Price:</label>
+              <div class="col-sm-3 small">
+                <input type="text" class="form-control small" id="price" value="{{selectedOrder.price}}">
+              </div>
             </div>
           </form>
         </div>
       </div>
       <ng-template #elseBlock1>
         <div *ngIf="tile.text === 'Orders list'; else elseBlock">
-          <div class="list-group" *ngFor="let order of orders">
+          <div class="list-group overflow-auto" *ngFor="let order of orders">
             <a href="javascript:void(0)" (click)="selectOrder(order)" class="list-group-item list-group-item-action d-flex">
               <div class="d-flex w-100 justify-content-between">
                 <h3 class="mb-1">{{order.name}}</h3>

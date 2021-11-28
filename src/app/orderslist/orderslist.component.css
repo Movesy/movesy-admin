@@ -1,9 +1,13 @@
 .list-group-item{
-  width: 460px;
+  width: 450px;
 }
 .row{
   width: 1300px;
 }
-.btn-danger{
+.btn{
   font-size: 12px;
+}
+.mat-grid-tile .mat-figure {
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
 }
