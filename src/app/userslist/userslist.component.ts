@@ -30,7 +30,7 @@ export class UserslistComponent implements OnInit {
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
     {text: 'Users list', cols: 1, rows: 25, color: '#4ea7ff'},
     {text: 'User info', cols: 3, rows: 8, color: '#ffffff'},
-    {text: 'Package or Rating', cols: 3, rows: 10, color: '#cccccc'},
+    {text: 'Package or Rating', cols: 3, rows: 26, color: '#cccccc'},
   ];
 
   constructor(private WebService : AuthService) { }
@@ -66,12 +66,6 @@ export class UserslistComponent implements OnInit {
         this.reviews = reviews;
       });
     }
-  }
-
-  loadReviews() {
-    this.WebService.getReviewsList().subscribe((reviews: any[]) => {
-      this.reviews = reviews;
-    })
   }
 
   logout(){

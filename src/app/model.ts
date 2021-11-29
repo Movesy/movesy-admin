@@ -19,8 +19,9 @@ export enum Role {
 }
 
 export class Location {
-  lng: number;
-  lat: number;
+  longitude: number;
+  latitude: number;
+  address: string;
 }
 
 export class Order {

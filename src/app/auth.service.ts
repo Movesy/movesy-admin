@@ -34,10 +34,6 @@ export class AuthService {
     return this.get('package/list');
   }
 
-  getReviewsList(){
-    return this.get('review/list');
-  }
-
   get(uri: string){
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }
@@ -51,21 +47,15 @@ export class AuthService {
   }
 
   deleteOrder(order: Order){
-    return this.http.delete(`${this.ROOT_URL}/package/delete/${order.id}`).subscribe((s) => {
-      console.log(s);
-    });
-  }
-
-  delete(uri: string){
-    return this.http.delete(`${this.ROOT_URL}/${uri}`);
+    return this.http.delete(`${this.ROOT_URL}/package/delete/?id=${order.id}`);
   }
 
   getPackagesByUser(id: string) {
-    return this.get(`package/user/${id}`);
+    return this.get(`package/user/?id=${id}`);
   }
 
   getReviewsByTransporter(id: string) {
-    return this.get(`review/transporter/${id}`);
+    return this.get(`review/transporter/?id=${id}`);
   }
 }
 

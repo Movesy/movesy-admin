@@ -22,7 +22,7 @@ export class OrderslistComponent implements OnInit {
 
   tiles: Tile[] = [
     {text: 'Under navbar', cols: 4, rows: 1, color: 'lightblue'},
-    {text: 'Orders list', cols: 1, rows: 38, color: '#4ea7ff'},
+    {text: 'Orders list', cols: 1, rows: 34, color: '#4ea7ff'},
     {text: 'Map with pins', cols: 3, rows: 12, color: '#ab7370'},
     {text: 'Selected orders description', cols: 3, rows: 6, color: '#cccccc'},
   ];
