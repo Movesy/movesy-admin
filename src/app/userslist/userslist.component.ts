@@ -96,6 +96,9 @@ export class UserslistComponent implements OnInit {
   }
 
   deleteR(r: Review) {
-    //TODO
+    this.WebService.deleteReview(r);
+    this.reviews.forEach((element,index)=>{
+      if(element === r) this.reviews.splice(index, 1);
+    });
   }
 }

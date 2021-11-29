@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Order, User} from "./model";
+import {Order, Review, User} from "./model";
 import {shareReplay, tap} from "rxjs/operators";
 
 @Injectable({
@@ -56,6 +56,10 @@ export class AuthService {
 
   getReviewsByTransporter(id: string) {
     return this.get(`review/transporter/?id=${id}`);
+  }
+
+  deleteReview(r: Review) {
+    return this.http.delete(`${this.ROOT_URL}/package/delete/?id=${r.id}`);
   }
 }
 
