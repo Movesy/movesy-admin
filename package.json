@@ -31,8 +31,6 @@
     "express": "^4.17.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "webpack": "^5.65.0",
-    "webpack-dev-server": "^4.6.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
