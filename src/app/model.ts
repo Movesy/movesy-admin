@@ -24,15 +24,15 @@ export class Location {
   address: string;
 }
 
-export class Order {
+export class Package {
   id: string;
   name: string;
   userID: string;
   transporterID: string;
   from: Location;
   to: Location;
-  creationDate: string;
-  deadline: string;
+  creationDate: Date;
+  deadline: Date;
   price: number;
   weight: number;
   size: Size;
@@ -57,16 +57,4 @@ export class Review{
   time: string;
   rating: number;
   description: string;
-}
-
-export class Orders {
-  orders: Order[] = [];
-}
-
-export class Users {
-  users: User[] = [];
-}
-
-export class Reviews {
-  reviews: Review[] = [];
 }

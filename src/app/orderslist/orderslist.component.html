@@ -40,50 +40,51 @@
       [style.background]="tile.color">
       <div *ngIf="tile.text === 'Selected orders description'; else elseBlock1">
         <div *ngIf="firstClick">
-          <h2> {{selectedOrder.name}} <button type="button" (click)="deleteOrder()" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
-          <form>
+          <h2> {{selectedOrder.name}} <button type="button" (click)="deleteOrder()" class="btn btn-danger">Delete</button> </h2>
+          <form [formGroup]="form" (submit)="saveOrder()">
             <div class="form-group row justify-content-between">
               <label for="transporter" class="col-sm-1 col-form-label small">Transporter:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="transporter" value="{{selectedOrder.transporterID}}">
+                <input type="text" class="form-control small" id="transporter" formControlName="trans" value="{{selectedOrder.transporterID}}">
               </div>
-              <label for="cos" class="col-sm-1 col-form-label small">Customer:</label>
+              <label for="cost" class="col-sm-1 col-form-label small">Customer:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="cos" value="{{selectedOrder.userID}}">
+                <input type="text" class="form-control small" id="cost" formControlName="cost" value="{{selectedOrder.userID}}">
               </div>
               <label for="stat" class="col-sm-1 col-form-label small">Status:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="stat" value="{{selectedOrder.status}}">
+                <input type="text" class="form-control small" id="stat" formControlName="stat" value="{{selectedOrder.status}}">
               </div>
             </div>
             <div class="form-group row justify-content-between">
               <label for="size" class="col-sm-1 col-form-label small">Size:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="size" value="{{selectedOrder.size}}">
+                <input type="text" class="form-control small" id="size" formControlName="size" value="{{selectedOrder.size}}">
               </div>
               <label for="wei" class="col-sm-1 col-form-label small">Weight:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="wei" value="{{selectedOrder.weight}}">
+                <input type="text" class="form-control small" id="wei" formControlName="wei" value="{{selectedOrder.weight}}">
               </div>
               <label for="dl" class="col-sm-1 col-form-label small">Deadline:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="dl" value="{{selectedOrder.deadline| date:'fullDate'}}">
+                <input type="text" class="form-control small" id="dl" formControlName="dl" value="{{selectedOrder.deadline| date:'fullDate'}}">
               </div>
             </div>
             <div class="form-group row justify-content-between">
               <label for="from" class="col-sm-1 col-form-label small">From:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="from" value="{{selectedOrder.from.address}}">
+                <input type="text" class="form-control small" id="from" formControlName="from" value="{{selectedOrder.from.address}}">
               </div>
               <label for="to" class="col-sm-1 col-form-label small">To:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="to" value="{{selectedOrder.to.address}}">
+                <input type="text" class="form-control small" id="to" formControlName="to" value="{{selectedOrder.to.address}}">
               </div>
               <label for="price" class="col-sm-1 col-form-label small">Price:</label>
               <div class="col-sm-3 small">
-                <input type="text" class="form-control small" id="price" value="{{selectedOrder.price}}">
+                <input type="text" class="form-control small" id="price" formControlName="price" value="{{selectedOrder.price}}">
               </div>
             </div>
+            <button type="submit" class="btn btn-primary">Save</button>
           </form>
         </div>
       </div>

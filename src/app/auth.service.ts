@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Order, Review, User} from "./model";
+import {Package, Review, User} from "./model";
 import {shareReplay, tap} from "rxjs/operators";
 
 @Injectable({
@@ -46,7 +46,7 @@ export class AuthService {
     return this.http.put(`${this.ROOT_URL}/${uri}`, details);
   }
 
-  deleteOrder(order: Order){
+  deleteOrder(order: Package){
     return this.http.delete(`${this.ROOT_URL}/package/delete/?id=${order.id}`);
   }
 
@@ -60,6 +60,24 @@ export class AuthService {
 
   deleteReview(r: Review) {
     return this.http.delete(`${this.ROOT_URL}/package/delete/?id=${r.id}`);
+  }
+
+  savePackage(p: Package){
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+
+    let pck = JSON.stringify(p)
+    return this.http.put(`${this.ROOT_URL}/package/edit/?id=${p.id}`, pck,httpOptions)
+  }
+
+  saveUser(u: User){
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+
+    let user = JSON.stringify(u)
+    return this.http.put(`${this.ROOT_URL}/user/edit/?id=${u.id}`, user, httpOptions)
   }
 }
 

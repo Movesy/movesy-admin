@@ -44,12 +44,13 @@
         <h1 class="text-center">{{selectedUser.username}}</h1>
         <h3 class="font-weight-bold text-center">{{selectedUser.role}}</h3>
         <div *ngIf="eUn; else elseBlock2">
-          <form>
+          <form [formGroup]="formun" (submit)="saveUn()">
             <div class="form-group row">
               <label for="inputUn" class="col-sm-1 col-form-label">Username:</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputUn" value="{{selectedUser.username}}">
+                <input type="text" class="form-control" id="inputUn" formControlName="inputUn" value="{{selectedUser.username}}">
               </div>
+              <button type="submit" class="btn btn-secondary col-sm-1">Save</button>
             </div>
           </form>
         </div>
@@ -57,12 +58,13 @@
             <p class="align-self-start">Username: {{selectedUser.username}} <a type="button" class="fas fa-edit" (click)="editUn()"></a></p>
           </ng-template>
         <div *ngIf="eEm; else elseBlock3">
-          <form>
+          <form [formGroup]="formem" (submit)="saveEm()">
             <div class="form-group row">
               <label for="inputEm" class="col-sm-1 col-form-label">Email:</label>
               <div class="col-sm-4">
-                <input type="email" class="form-control" id="inputEm" value="{{selectedUser.email}}">
+                <input type="email" class="form-control" id="inputEm" formControlName="inputEm" value="{{selectedUser.email}}">
               </div>
+              <button type="submit" class="btn btn-secondary col-sm-1">Save</button>
             </div>
           </form>
         </div>
@@ -70,12 +72,13 @@
           <p class="align-self-start">Email: {{selectedUser.email}} <a type="button" class="fas fa-edit" (click)="editEm()"></a></p>
         </ng-template>
         <div *ngIf="ePh; else elseBlock4">
-          <form>
+          <form [formGroup]="formph" (submit)="savePh()">
             <div class="form-group row">
               <label for="inputPh" class="col-sm-1 col-form-label">Phone:</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="inputPh" value="{{selectedUser.telephone}}">
+                <input type="text" class="form-control" id="inputPh" formControlName="inputPh" value="{{selectedUser.telephone}}">
               </div>
+              <button type="submit" class="btn btn-secondary col-sm-1">Save</button>
             </div>
           </form>
         </div>
@@ -83,20 +86,19 @@
           <p class="align-self-start">Phone: {{selectedUser.telephone}} <a type="button" class="fas fa-edit" (click)="editPh()"></a></p>
         </ng-template>
         <div *ngIf="ePw; else elseBlock5">
-          <form>
+          <form [formGroup]="formpw" (submit)="savePw()">
             <div class="form-group row">
               <label for="inputPw" class="col-sm-2 col-form-label">New password:</label>
-              <div class="col-sm-2">
-                <input type="password" class="form-control" id="inputPw">
+              <div class="col-sm-3">
+                <input type="password" class="form-control" formControlName="inputPw" id="inputPw">
               </div>
-              <button type="submit" (click)="save()" class="btn btn-secondary">Save</button>
+              <button type="submit" class="btn btn-secondary col-sm-1">Save</button>
             </div>
           </form>
         </div>
         <ng-template #elseBlock5>
           <div class="row">
             <button type="button" (click)="editPw()" class="btn btn-secondary">Change password</button>
-            <button type="submit" (click)="save()" class="btn btn-secondary">Save</button>
           </div>
         </ng-template>
       </div>
@@ -106,8 +108,8 @@
         <div *ngIf="firstClick">
           <div *ngIf="selectedUser.role.toString() === 'USER'">
             <div class="list-group" *ngFor="let p of uPackages">
-              <h2> {{p.name}} <button type="button" (click)="deleteP(p)" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button></h2>
-              <form>
+              <h2> {{p.name}} <button type="button" (click)="deleteP(p)" class="btn btn-danger">Delete</button> </h2>
+              <form [formGroup]="packageForm" (submit)="saveOrder()">
                 <div class="form-group row justify-content-between">
                   <label for="transporter" class="col-sm-1 col-form-label small">Transporter:</label>
                   <div class="col-sm-3 small">
@@ -150,17 +152,19 @@
                     <input type="text" class="form-control small" id="price" value="{{p.price}}">
                   </div>
                 </div>
+                <button type="submit" class="btn btn-primary">Save</button>
               </form>
             </div>
           </div>
           <div *ngIf="selectedUser.role.toString() === 'TRANSPORTER'">
             <div class="list-group-horizontal-lg" *ngFor="let r of reviews">
-              <h2> {{r.customerUsername}} <button type="button" (click)="deleteR(r)" class="btn btn-danger">Delete</button> <button type="button" class="btn btn-primary">Save</button><a *ngFor="let a of [].constructor(r.rating)" class="fas fa-star"></a> </h2>
+              <h2> {{r.customerUsername}} <button type="button" (click)="deleteR(r)" class="btn btn-danger">Delete</button> <a *ngFor="let a of [].constructor(r.rating)" class="fas fa-star"></a> </h2>
               <form>
                 <div class="form-group row justify-content-between">
-                  <div class="col-sm-12 small">
+                  <div class="col-sm-10 small">
                     <input type="text" class="form-control small" id="review" value="{{r.description}}">
                   </div>
+                  <button type="button" class="btn btn-primary col-sm-2">Save</button>
                 </div>
               </form>
             </div>
