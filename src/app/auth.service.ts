@@ -10,7 +10,7 @@ export class AuthService {
   readonly ROOT_URL;
 
   constructor(private http: HttpClient) {
-    this.ROOT_URL = "http://localhost:4200/api";
+    this.ROOT_URL = "https://movesy-admin.herokuapp.com/api";
   }
 
   login(username: string, password: string){

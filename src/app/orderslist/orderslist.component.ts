@@ -116,4 +116,8 @@ export class OrderslistComponent implements OnInit {
       });
     });
   }
+
+  users() {
+    this.router.navigateByUrl('admin/users');
+  }
 }
