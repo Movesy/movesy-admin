@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Package, Review, User} from "./model";
 import {shareReplay, tap} from "rxjs/operators";
+import {environment} from "../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  readonly ROOT_URL;
+  readonly ROOT_URL = environment.baseUrl;
 
   constructor(private http: HttpClient) {
     this.ROOT_URL = "https://movesy-admin.herokuapp.com/api";
