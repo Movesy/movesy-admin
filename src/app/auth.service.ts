@@ -8,7 +8,7 @@ import {environment} from "../environments/environment.prod";
   providedIn: 'root'
 })
 export class AuthService {
-  readonly ROOT_URL = environment.baseUrl;
+  readonly ROOT_URL;
   readonly ROOT_URL_2;
 
   constructor(private http: HttpClient) {
@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   login(username: string, password: string){
-    return this.http.post<User>(`${this.ROOT_URL_2}/authenticate`, {username, password})
+    return this.http.post<User>(`${this.ROOT_URL}/authenticate`, {username, password})
       .pipe( tap(res => this.setSession(res)), shareReplay());
   }
 
