@@ -9,8 +9,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 app.use(requireHTTPS);
-app.use(express.static(__dirname + '/dist/movesy-admin'));
+app.use(express.static(__dirname + '/dist/AdminPage'));
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname+'/dist/movesy-admin/index.html'));
+  res.sendFile(path.join(__dirname+'/dist/AdminPage/index.html'));
 });
 app.listen(process.env.PORT || 8080);
