@@ -9,14 +9,15 @@ import {environment} from "../environments/environment.prod";
 })
 export class AuthService {
   readonly ROOT_URL = environment.baseUrl;
+  readonly ROOT_URL_2;
 
   constructor(private http: HttpClient) {
     this.ROOT_URL = "https://movesy-admin.herokuapp.com/api";
-    this.ROOT_URL = "https://movesy.herokuapp.com";
+    this.ROOT_URL_2 = "https://movesy.herokuapp.com";
   }
 
   login(username: string, password: string){
-    return this.http.post<User>(`${this.ROOT_URL}/authenticate`, {username, password})
+    return this.http.post<User>(`${this.ROOT_URL_2}/authenticate`, {username, password})
       .pipe( tap(res => this.setSession(res)), shareReplay());
   }
 
