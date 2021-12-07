@@ -1,10 +1,3 @@
-function requireHTTPS(req, res, next) {
-  // The 'x-forwarded-proto' check is for Heroku
-  if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
-    return res.redirect('https://' + req.get('host') + req.url);
-  }
-  next();
-}
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const app = express();
@@ -34,7 +27,7 @@ app.use("/*", createProxyMiddleware(
     changeOrigin: true,
     secure:true,
     router: {
-      'https://movesy-admin.herokuapp.com': 'https://movesy.herokuapp.com',
+      'dev.localhost:3000': 'https://movesy.herokuapp.com',
     },}))
 
 app.listen(process.env.PORT || 3000)
